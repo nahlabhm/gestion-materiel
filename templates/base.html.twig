@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block stylesheets %}
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic'
+              rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet'
+              type='text/css'>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('theme/fonts/icomoon/icomoon.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('theme/js/plugins/magnific/magnific-popup.css') }}">
+
+        <link rel="stylesheet" type="text/css"
+              href="{{ asset('theme/js/utility/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('theme/skin/default_skin/less/theme.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('theme/allcp/forms/css/forms.css') }}">
+    {% endblock %}
+
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="sb-top sb-top-md onload-check">
+<div id="main">
+    {{ include('includes/header.html.twig') }}
+    {{ include('includes/menu.html.twig') }}
+    <section id="content_wrapper">
+        {% block body %}
+        {% endblock %}
+    </section>
+
+</div>
+
+{% block javascripts %}
+
+    <script src="{{ asset('theme/js/jquery/jquery-1.11.3.min.js') }}"></script>
+    <script src="{{ asset('theme/js/jquery/jquery_ui/jquery-ui.min.js') }}"></script>
+
+    <script src="{{ asset('theme/js/plugins/circles/circles.js') }}"></script>
+
+
+    <script src="{{ asset('theme/js/plugins/magnific/jquery.magnific-popup.js') }}"></script>
+
+    <script src="{{ asset('theme/js/utility/utility.js') }}"></script>
+    <script src="{{ asset('theme/js/utility/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('theme/js/demo/demo.js') }}"></script>
+    <script src="{{ asset('theme/js/main.js') }}"></script>
+
+    <script src="{{ asset('theme/js/demo/widgets.js') }}"></script>
+
+    <script src="{{ asset('theme/js/pages/dashboard1.js') }}"></script>
+{% endblock %}
+</body>
+</html>
+

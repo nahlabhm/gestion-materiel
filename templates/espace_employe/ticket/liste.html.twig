@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste ticket{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des tickets</div>
+                    <div class="col-lg-15 text-right">
+                        <a href="{{ path('espace_employe_ticket_ajouter') }}" class="btn btn-dark btn-sm"><i
+                                    class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">titre</th>
+                                <th scope="col">urgence</th>
+                                <th scope="col">statut</th>
+                                <th scope="col">impact</th>
+                                <th scope="col">matricule</th>
+                                <th scope="col">Date </th>
+                                <th scope="col" class="text-left">description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ticket in tickets %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ ticket.titre }}</td>
+                                    <td>{{ ticket.urgence }}</td>
+                                    <td>{{ ticket.statut }}</td>
+                                    <td>{{ ticket.impact }}</td>
+                                    <td>{{ ticket.materiel.numId|default('n/a') }}</td>
+                                    <td>{{ ticket.date|date('d-m-Y à h:i') }}</td>
+                                    <td class="text-left">{{ ticket.description }}</td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

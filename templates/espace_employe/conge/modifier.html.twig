@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier personnel{% endblock %}
+
+{% block body %}
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Modifier personnel</div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-lg-8 off">
+                            <form method="post" action="#" id="form-ui">
+
+                                {{ form_start(form) }}
+                                <div class="col-lg-6">
+                                    {{ form_row(form.noms) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.prenoms) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.type) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.dated) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.datef) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.nbjour) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.description) }}
+                                </div>
+                                    {{ form_rest(form) }}
+                                <input type="submit" class="btn btn-info" value="Enregistrer">
+                                {{ form_end(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

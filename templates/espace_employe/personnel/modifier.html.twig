@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier personnel{% endblock %}
+
+{% block body %}
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Modifier personnel</div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-lg-8 off">
+                            <form method="post" action="#" id="form-ui">
+
+                                {{ form_start(form) }}
+                                <div class="col-lg-6">
+                                    {{ form_row(form.cartenational) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.noms) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.prenoms) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.sexe) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.datenaiss) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.lieunaiss) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.nationalite) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.situationfamiliale) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.nombreenfant) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.codepostale) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.ville) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.pays) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.adresse) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.telephone) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.email) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.permis) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.numeropasseport) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.service) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.contrat) }}
+                                </div>
+
+                                <div class="col-lg-6">
+                                    {{ form_row(form.fonction) }}
+                                </div>
+
+                                {{ form_rest(form) }}
+                                <input type="submit" class="btn btn-info" value="Enregistrer">
+                                {{ form_end(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste materiel{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des materiels</div>
+                    <div class="col-lg-15 text-right">
+                        <a href="{{ path('espace_admin_materiel_ajouter') }}" class="btn btn-dark btn-sm"><i
+                                    class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">num_id</th>
+                                <th scope="col">type</th>
+                                <th scope="col">marque</th>
+                                <th scope="col">modele</th>
+                                <th scope="col">serie</th>
+                                <th scope="col">sys_expl</th>
+                                <th scope="col">ram</th>
+                                <th scope="col">type_proc</th>
+                                <th scope="col">hdd</th>
+                                <th scope="col">ad_ip</th>
+                                <th scope="col">ad_wifi</th>
+                                <th scope="col">service</th>
+                                <th scope="col">emplacement</th>
+                                <th scope="col">utilisteurs</th>
+                                <th>Action</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for materiel in materiels %}
+                                <tr>
+                                    <td>{{ materiel.numId }}</td>
+                                    <td>{{ materiel.type }}</td>
+                                    <td>{{ materiel.modele }}</td>
+                                    <td>{{ materiel.marque }}</td>
+                                    <td>{{ materiel.serie }}</td>
+                                    <td>{{ materiel.sysExpl }}</td>
+                                    <td>{{ materiel.ram }}</td>
+                                    <td>{{ materiel.typeProc }}</td>
+                                    <td>{{ materiel.hdd }}</td>
+                                    <td>{{ materiel.adIp }}</td>
+                                    <td>{{ materiel.adWifi }}</td>
+
+                                    <td>{{ materiel.service.nom }}</td>
+                                    <td>{{  materiel.emplacement.nom }}</td>
+                                    <td>
+                                        {% for utilisateur in materiel.utilisteurs %}
+                                                - {{ utilisateur.matricule }}<br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('espace_admin_materiel_modifier', {'id': materiel.id}) }}">
+                                            <i class="fa fa-edit text-info"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a href="{{ path('espace_admin_materiel_supprimer', {'id': materiel.id}) }}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

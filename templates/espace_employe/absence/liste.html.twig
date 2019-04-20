@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste personnel{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des conges</div>
+                    <div class="col-lg-15 text-right">
+                        <a href="{{ path('espace_employe_absence_ajouter') }}" class="btn btn-dark btn-sm"><i
+                                    class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Motif</th>
+                                <th scope="col">Date debut </th>
+                                <th scope="col">Date fin</th>
+                                <th scope="col">nombre de jour</th>
+                                <th scope="col">Remarque</th>
+                                <th >action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for absence in absences %}
+
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ absence.personnel.noms }}</td>
+                                    <td>{{ absence.personnel.prenoms }}</td>
+                                    <td>{{ absence.motif }}</td>
+                                    <td>{{ absence.datede|date('d-m-Y')}}</td>
+                                    <td>{{ absence.datefin|date('d-m-Y')}}</td>
+                                    <td>{{ absence.nbjour}}</td>
+                                    <td>{{ absence.remarque}}</td>
+                                    <td>
+                                        <a href="{{ path('espace_employe_absence_modifier', {'id': absence.id}) }}">
+                                            <i class="fa fa-edit text-info"></i>
+                                        </a>
+                                        <a href="{{ path('espace_employe_absence_supprimer', {'id': absence.id}) }}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

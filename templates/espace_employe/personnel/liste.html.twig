@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste personnel{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des personnels</div>
+                    <div class="col-lg-15 text-right">
+                        <a href="{{ path('espace_employe_personnel_ajouter') }}" class="btn btn-dark btn-sm"><i
+                                    class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">carte national</th>
+                                <th scope="col">nom</th>
+                                <th scope="col">prenom</th>
+                                <th scope="col">sexe</th>
+                                <th scope="col">date naissance</th>
+                                <th scope="col">lieu naissance</th>
+                                <th scope="col">nationalite</th>
+                                <th scope="col">situation familiale</th>
+                                <th scope="col">nombre d'enfant</th>
+                                <th scope="col">code postale</th>
+                                <th scope="col">ville</th>
+                                <th scope="col">pays</th>
+                                <th scope="col">adresse</th>
+                                <th scope="col">telephone</th>
+                                <th scope="col">email</th>
+                                <th scope="col">permis</th>
+                                <th scope="col">numero de passeport</th>
+                                <th scope="col">service</th>
+                                <th scope="col">contrat</th>
+                                <th scope="col">fonction</th>
+                                <th >action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for personnel in personnels %}
+
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{personnel.cartenational}}</td>
+                                    <td>{{ personnel.noms }}</td>
+                                    <td>{{ personnel.prenoms }}</td>
+                                    <td>{{ personnel.sexe }}</td>
+                                    <td>{{ personnel.datenaiss|date('d-m-Y')}}</td>
+                                    <td>{{personnel.lieunaiss}}</td>
+                                    <td>{{personnel.nationalite}}</td>
+                                    <td>{{personnel.situationfamiliale}}</td>
+                                    <td>{{personnel.nombreenfant}}</td>
+                                    <td>{{personnel.codepostale}}</td>
+                                    <td>{{personnel.ville}}</td>
+                                    <td>{{personnel.pays}}</td>
+                                    <td>{{personnel.adresse}}</td>
+                                    <td>{{personnel.telephone}}</td>
+                                    <td>{{personnel.email}}</td>
+                                    <td>{{personnel.permis}}</td>
+                                    <td>{{personnel.numeropasseport}}</td>
+                                    <td>{{personnel.service}}</td>
+                                    <td>{{personnel.contrat}}</td>
+                                    <td>{{personnel.fonction}}</td>
+
+
+
+
+
+                                    <td>
+                                        <a href="{{ path('espace_employe_personnel_modifier', {'id': personnel.id}) }}">
+                                            <i class="fa fa-edit text-info"></i>
+                                        </a>
+                                        <a href="{{ path('espace_employe_personnel_supprimer', {'id': personnel.id}) }}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier matériel{% endblock %}
+
+{% block body %}
+
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Modifier un matériel</div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-lg-8 off">
+                            <form method="post" action="#" id="form-ui">
+
+                                {{ form_start(form) }}
+                                <div class="col-lg-6">
+                                    {{ form_row(form.num_id) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.type) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.modele) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.marque) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.serie) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.sys_expl) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.ram ) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.type_proc) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.hdd) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.ad_ip) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.ad_wifi) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.service) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.emplacement) }}
+                                </div>
+                                <div class="col-lg-6">
+                                    {{ form_row(form.utilisteurs) }}
+                                </div>
+
+                                {{ form_rest(form) }}
+                                <input type="submit" class="btn btn-info" value="Enregistrer">
+                                {{ form_end(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

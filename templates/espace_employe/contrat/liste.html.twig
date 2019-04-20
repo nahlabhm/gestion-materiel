@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste personnel{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+        <div class="chute chute-center">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des contrats</div>
+                    <div class="col-lg-15 text-right">
+                        <a href="{{ path('espace_employe_contrat_ajouter') }}" class="btn btn-dark btn-sm">
+                            <i class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">nom</th>
+                                <th scope="col">prenom</th>
+                                <th scope="col">nom contrat</th>
+                                <th scope="col">nombre d'heure </th>
+                                <th scope="col">nombre de jours pan an</th>
+                                <th scope="col">jour travailles de la semaine </th>
+                                <th >action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for contrat in contrats %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ contrat.personnel.noms }}</td>
+                                    <td>{{ contrat.personnel.prenoms }}</td>
+                                    <td>{{ contrat.type }}</td>
+                                    <td>{{ contrat.dated|date('d-m-Y')}}</td>
+                                    <td>{{ contrat.datef|date('d-m-Y')}}</td>
+                                    <td>{{ contrat.nbjour}}</td>
+                                    <td>{{ contrat.description}}</td>
+                                    <td>
+                                        <a href="{{ path('espace_employe_contrat_modifier', {'id': contrat.id}) }}">
+                                            <i class="fa fa-edit text-info"></i></a>
+                                        <a href="{{ path('espace_employe_contrat_supprimer', {'id': contrat.id}) }}">
+                                            <i class="fa fa-trash text-danger"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,125 @@
+<aside id="sidebar_left" class="sidebar-header">
+    <center>
+        <div class="sidebar-left-content nano-content">
+            <ul class="nav sidebar-menu">
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">Gestion employés</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-list-ul"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">Gestion employés</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-list-ul"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li><a href="{{ path('espace_admin_liste_employes') }}">Liste</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">Gestion matériels</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-desktop"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li><a href="{{ path('espace_admin_liste_materiels') }}">Liste materiels</a></li>
+                            <li><a href="">statistiques</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">Gestion tickets</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-list-ul"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ path('espace_admin_ticket_liste') }}">
+                                    Liste tickets
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('emplacement_ajouter') }}">
+                                    Ticket en attente
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('emplacement_ajouter') }}">
+                                    Ticket affectés
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">Gestion documents </span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-file-text-o"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="">
+                                    Liste des fichier
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">parc</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-list-ul"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ path('liste_emplacements') }}">
+                                    moniteur
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                {% elseif is_granted('ROLE_EMPLOYE') %}
+                    <li>
+                        <a href="">
+                            <span class="sidebar-title">Accueil</span>
+                            <span class="sb-menu-icon fa fa-home"></span>
+                        </a>
+                    </li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="sidebar-title">Tickets</span>
+                        <span class="caret"></span>
+                        <span class="sb-menu-icon fa fa-list-ul"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li><a href="{{ path('espace_employe_ticket_liste') }}">Liste</a></li>
+                    </ul>
+                </li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="sidebar-title">RH</span>
+                            <span class="caret"></span>
+                            <span class="sb-menu-icon fa fa-list-ul"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li><a href="{{ path('espace_employe_personnel_liste') }}">Personnel</a></li>
+                            <li><a href="{{ path('espace_employe_conge_liste') }}">Congé</a></li>
+                            <li><a href="{{ path('espace_employe_absence_liste') }}">Absence</a></li>
+                        </ul>
+
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </center>
+</aside>

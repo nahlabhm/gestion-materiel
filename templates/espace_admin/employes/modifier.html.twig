@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier employé{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Modifier un employé</div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form method="post" action="#" id="form-ui">
+
+                                {{ form_start(form) }}
+
+                                {{ form_widget(form) }}
+
+                                <input type="submit" class="btn btn-info" value="Enregistrer">
+                                {{ form_end(form) }}
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

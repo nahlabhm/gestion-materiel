@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste employé{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-8">Liste des employés</div>
+                    <div class="col-lg-4 text-right">
+                        <a href="{{ path('espace_admin_employe_ajouter') }}" class="btn btn-success btn-sm">
+                            <i class="fa fa-plus"></i> Ajouter</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Matricule</th>
+                                <th scope="col">Role</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for employe in employes %}
+                                <tr>
+                                    <td>{{ employe.utilisateur.nom|capitalize }}</td>
+                                    <td>{{ employe.utilisateur.prenom|capitalize }}</td>
+                                    <td>{{ employe.utilisateur.matricule }}</td>
+                                    <td>
+                                        {% for role in employe.utilisateur.roles if role != 'ROLE_USER' %}
+                                            {{ role }}<br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('espace_admin_employe_modifier', {'id': employe.id}) }}">
+                                            <i class="fa fa-edit text-info"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a href="{{ path('espace_admin_employe_supprimer', {'id': employe.id}) }}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste materiel{% endblock %}
+
+{% block body %}
+    <section id="content" class="table-layout animated fadeIn">
+
+        <div class="chute chute-center">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title col-lg-5">Liste des tickets</div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">urgence</th>
+                                <th scope="col">statut</th>
+                                <th scope="col">impact</th>
+                                <th scope="col">Matriel</th>
+                                <th scope="col">Date</th>
+                                <th scope="col" class="text-left">description</th>
+                                <th>Affecter</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ticket in tickets %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ ticket.urgence }}</td>
+                                    <td>{{ ticket.statut }}</td>
+                                    <td>{{ ticket.impact }}</td>
+                                    <td>{{ ticket.materiel.numId }}</td>
+                                    <td>{{ ticket.date|date('d-m-Y à h:i') }}</td>
+                                    <td class="text-left">{{ ticket.description }}</td>
+                                    <td>
+                                        {% if ticket.affectation %}
+                                            Affecté à {{ ticket.affectation.technicien.utilisateur.prenomNom }}
+                                        {% else %}
+                                            <a href="{{ path('espace_admin_ticket_affecter', {'id': ticket.id}) }}">Affecter</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
