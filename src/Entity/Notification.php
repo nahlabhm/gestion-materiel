@@ -37,9 +37,15 @@ class Notification
      */
     private $utilisateur;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $vue;
+
     public function __construct()
     {
         $this->dateEnvoi = new \DateTime();
+        $this->vue = false;
     }
 
     public function getId(): ?int
@@ -91,6 +97,18 @@ class Notification
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getVue(): ?bool
+    {
+        return $this->vue;
+    }
+
+    public function setVue(bool $vue): self
+    {
+        $this->vue = $vue;
 
         return $this;
     }

@@ -504,103 +504,32 @@
                 <button data-toggle="dropdown" class="btn dropdown-toggle">
                     <span class="fa fa-bell fs16"></span>
                 </button>
-                <button data-toggle="dropdown" class="btn dropdown-toggle fs10 bg-color-2 visible-xl">
-                    8
-                </button>
+                {% if nbNotifNonVue > 0 %}
+                    <button data-toggle="dropdown" class="btn dropdown-toggle fs10 bg-color-2 visible-xl">
+                        {{ nbNotifNonVue }}
+                    </button>
+                {% endif %}
                 <div class="dropdown-menu keep-dropdown w370 animated animated-shorter fadeIn activity-container timeline-container"
                      role="menu">
                     <div class="panel activity-content mbn">
                         <div class="panel-menu">
-                            <span class="panel-title fw600"> Activity reports</span>
+                            <span class="panel-title fw600"> Notifications</span>
                         </div>
                         <div class="panel-body scroller-navbar pn">
                             <ol class="timeline-list">
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-massage">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>John Doe</b>
-                                        Sent you a message.
-                                        <a href="#">View now</a>
-                                    </div>
-                                    <div class="timeline-date">11:15am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-info">
-                                        <span class="fa fa-info"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Admin</b>
-                                        created invoice:
-                                        <a href="#">iPad Air</a>
-                                    </div>
-                                    <div class="timeline-date">9:59am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-info">
-                                        <span class="fa fa-info"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Admin</b>
-                                        created invoice:
-                                        <a href="#">iPhone 6s</a>
-                                    </div>
-                                    <div class="timeline-date">11:15am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-massage">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Lara Johnes</b> Sent you a message.
-                                        <a href="#">View now</a>
-                                    </div>
-                                    <div class="timeline-date">3:18pm</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-massage">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>John Doe</b>
-                                        Sent you a message.
-                                        <a href="#">View now</a>
-                                    </div>
-                                    <div class="timeline-date">11:15am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-info">
-                                        <span class="fa fa-info"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Admin</b>
-                                        created invoice:
-                                        <a href="#">iPad Air</a>
-                                    </div>
-                                    <div class="timeline-date">9:59am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-info">
-                                        <span class="fa fa-info"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Admin</b>
-                                        created invoice:
-                                        <a href="#">iPhone 6s</a>
-                                    </div>
-                                    <div class="timeline-date">11:15am</div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="timeline-icon bg-timeline-massage">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                    <div class="timeline-desc">
-                                        <b>Lara Johnes</b> Sent you a message.
-                                        <a href="#">View now</a>
-                                    </div>
-                                    <div class="timeline-date">3:18pm</div>
-                                </li>
+                                {% for notif in notifications %}
+                                    <li class="timeline-item {{ notif.vue ? '' : 'non-vue' }}">
+                                        <div class="timeline-icon bg-timeline-massage">
+                                            <span class="fa fa-envelope"></span>
+                                        </div>
+                                        <div class="timeline-desc">
+                                            <b>&nbsp;</b>
+                                            {{ notif.message }}
+                                            <a href="{{ path('notification_voir', {'id' : notif.id}) }}">Voir</a>
+                                        </div>
+                                        <div class="timeline-date">{{ notif.dateEnvoi|date('d-m-Y à h:i') }}</div>
+                                    </li>
+                                {% endfor %}
                             </ol>
                         </div>
                         <div class="panel-footer text-center">

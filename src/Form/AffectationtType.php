@@ -28,9 +28,9 @@ class AffectationtType extends AbstractType
                 'query_builder' => function (EmployeRepository $repository) {
                     return $repository->createQueryBuilder('e')
                         ->leftJoin('e.utilisateur', 'u')
-                        ->where('u.roles LIKE role')
+                        ->where('u.roles LIKE :role')
                         ->setParameter('role', '%ROLE_TECHNICIEN%')
-                        ->getQuery()->getResult();
+                        ;
                 }
             ));
     }

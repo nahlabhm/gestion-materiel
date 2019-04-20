@@ -18,6 +18,16 @@ class NotificationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Notification::class);
     }
+    public function nombreNonVue($user){
+        return $this->createQueryBuilder('n')
+            ->select('COUNT(n)')
+            ->where('n.vue = false')
+            ->andWhere('n.utilisateur = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 
     // /**
     //  * @return Notification[] Returns an array of Notification objects

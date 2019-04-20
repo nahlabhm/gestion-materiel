@@ -22,6 +22,11 @@ class Employe
      */
     private $utilisateur;
 
+    public function nomPrenom()
+    {
+        return $this->getUtilisateur()->nomPrenom();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

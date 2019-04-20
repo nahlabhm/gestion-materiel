@@ -4,6 +4,7 @@ namespace App\Controller\EspaceAdmin;
 
 use App\Entity\AffectationTicket;
 use App\Entity\Materiel;
+use App\Entity\Notification;
 use App\Entity\Ticket;
 use App\Form\AffectationtType;
 use App\Form\TicketType;
@@ -59,6 +60,14 @@ class TicketController extends AbstractController
             $affectation->setTicket($ticket);
             $em->persist($affectation);
             $em->flush();
+
+            $notification = new Notification();
+            $notification->setMessage('Une nouvelle affectation');
+            $notification->setUtilisateur($affectation->getTechnicien()->getUtilisateur());
+            $notification->setUrl($this->generateUrl('espace_employe_affectation_ticket_voir', array('id'=> $affectation->getId())));
+            $em->persist($notification);
+            $em->flush();
+
             return $this->redirectToRoute('espace_admin_ticket_liste');
 
         }

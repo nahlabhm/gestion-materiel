@@ -18,6 +18,7 @@
               href="{{ asset('theme/js/utility/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('theme/skin/default_skin/less/theme.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('theme/allcp/forms/css/forms.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('theme/skin/modification.css') }}">
     {% endblock %}
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -29,7 +30,7 @@
 </head>
 <body class="sb-top sb-top-md onload-check">
 <div id="main">
-    {{ include('includes/header.html.twig') }}
+    {{ render(controller('App\\Controller\\DefaultController::header')) }}
     {{ include('includes/menu.html.twig') }}
     <section id="content_wrapper">
         {% block body %}

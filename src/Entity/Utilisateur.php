@@ -55,10 +55,6 @@ class Utilisateur implements UserInterface
      */
     private $employe;
 
-    public function prenomNom()
-    {
-        return $this->prenom.' '.$this->nom;
-    }
     public function nomPrenom()
     {
         return $this->prenom.' '.$this->nom ;

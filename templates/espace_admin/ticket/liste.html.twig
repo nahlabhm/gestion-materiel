@@ -38,7 +38,7 @@
                                     <td class="text-left">{{ ticket.description }}</td>
                                     <td>
                                         {% if ticket.affectation %}
-                                            Affecté à {{ ticket.affectation.technicien.utilisateur.prenomNom }}
+                                           {{ ticket.affectation.technicien.utilisateur.nomPrenom }}
                                         {% else %}
                                             <a href="{{ path('espace_admin_ticket_affecter', {'id': ticket.id}) }}">Affecter</a>
                                         {% endif %}
